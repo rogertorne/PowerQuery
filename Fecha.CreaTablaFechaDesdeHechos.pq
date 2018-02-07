@@ -1,5 +1,5 @@
 /*
-        Crea unta tabla de fechas con diferentes columnas a partir de una tabla de hechos.
+        Crea una tabla de fechas con diferentes columnas a partir de una tabla de hechos.
 		Parámetros:
 			TablaOrigen: la tabla de hechos sobre la que queremos asociar la tabla de fechas
 			CampoFecha: nombre del campo que contiene la fecha de la tabla de hechos
