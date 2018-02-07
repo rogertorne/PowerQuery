@@ -5,7 +5,7 @@
 			CampoFecha: nombre del campo que contiene la fecha de la tabla de hechos
 	*/
 
-let CreateDateTable = (TablaOrigen as table, CampoFecha as text) as table =>
+let CreaTablaFechas = (TablaOrigen as table, CampoFecha as text) as table =>
   let
     FechaInicio = List.Min(Table.Column(TablaOrigen, CampoFecha)),
     FechaFin = List.Max(Table.Column(TablaOrigen, CampoFecha)),
@@ -27,9 +27,9 @@ let CreateDateTable = (TablaOrigen as table, CampoFecha as text) as table =>
     InsertaDiaSemana = Table.AddColumn(InsertaNombreTrim, "Num. Dia de la semana", each Date.DayOfWeek([Fecha])),
     InsertaNombreDiaSem = Table.AddColumn(InsertaDiaSemana, "Día de la semana tmp", each Date.ToText([Fecha], "dddd"), type text),
     CambiaNombreDiaSem = Table.AddColumn(InsertaNombreDiaSem, "Día de la semana", each Text.Upper(Text.Range([Día de la semana tmp], 0, 1)) & Text.Range([Día de la semana tmp], 1, Text.Length([Día de la semana tmp])-1)),
-    EliminarColTmp = Table.RemoveColumns(CambiaNombreDiaSem,{"Día de la semana tmp"})
-
+    EliminarColTmp = Table.RemoveColumns(CambiaNombreDiaSem,{"Día de la semana tmp"}),
+    OrdenMes = Table.AddColumn(EliminarColTmp, "OrdenMes", each Number.ToText(Date.Month([Fecha])) & Number.ToText([Año]))
   in
-    EliminarColTmp 
+    OrdenMes 
 in
-  CreateDateTable
+  CreaTablaFechas
