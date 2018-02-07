@@ -26,7 +26,7 @@ let CreaTablaFechas = (Fecha_Inicio as date, Fecha_Fin as date) as table =>
     InsertaNombreDiaSem = Table.AddColumn(InsertaDiaSemana, "Día de la semana tmp", each Date.ToText([Fecha], "dddd"), type text),
     CambiaNombreDiaSem = Table.AddColumn(InsertaNombreDiaSem, "Día de la semana", each Text.Upper(Text.Range([Día de la semana tmp], 0, 1)) & Text.Range([Día de la semana tmp], 1, Text.Length([Día de la semana tmp])-1)),
     EliminarColTmp = Table.RemoveColumns(CambiaNombreDiaSem,{"Día de la semana tmp"}),
-    OrdenMes = Table.AddColumn(EliminarColTmp, "OrdenMes", each Number.ToText(Date.Month([Fecha])) & Number.ToText([Año]))
+    OrdenMes = Table.AddColumn(EliminarColTmp, "OrdenMes", each Number.FromText(Number.ToText([Año]) & Date.ToText([Fecha], "MM")))
   in
     OrdenMes 
 in
