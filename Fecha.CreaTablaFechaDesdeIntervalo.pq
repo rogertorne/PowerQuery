@@ -1,5 +1,5 @@
 /*
-        Crea unta tabla de fechas con diferentes columnas a partir de una fecha inicial y una fecha final.
+        Crea una tabla de fechas con diferentes columnas a partir de una fecha inicial y una fecha final.
 		Parámetros:
 			Fecha_Inicio: fecha inicial del periodo de fechas que contendrá la tabla
 			Fecha_Fin: fecha final del periodo de fechas que contendrá la tabla
