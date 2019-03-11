@@ -5,6 +5,6 @@ let
     nbsp = if caracterFinal=" " then Character.FromNumber(160) else "",
     split = Text.SplitAny(texto, caracterFinal & nbsp),
     EliminaEspacios = List.Select(split, each _ <> ""),
-    Resultado = Text.Combine(EliminaEspacios, char),
+    Resultado = Text.Combine(EliminaEspacios, caracterFinal),
     Sustituye = Text.Replace(Resultado," ","")
 in Sustituye
