@@ -3,7 +3,7 @@
 let
     caracterFinal = if caracter = null then " " else caracter,
     nbsp = if caracterFinal=" " then Character.FromNumber(160) else "",
-    split = Text.SplitAny(texto, char & nbsp),
+    split = Text.SplitAny(texto, caracterFinal & nbsp),
     EliminaEspacios = List.Select(split, each _ <> ""),
     Resultado = Text.Combine(EliminaEspacios, char),
     Sustituye = Text.Replace(Resultado," ","")
