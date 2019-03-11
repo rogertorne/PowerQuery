@@ -1,10 +1,10 @@
-(texto as text, optional char_to_trim as text) =>
-
+(texto as text) =>
+/* Función que elimina todos los espacios en blanco de un texto */
 let
-    char = if char_to_trim = null then " " else char_to_trim,
-    nbsp = if char=" " then Character.FromNumber(160) else "",
+    char = " ",
+    nbsp = Character.FromNumber(160),
     split = Text.SplitAny(texto, char & nbsp),
-    removeblanks = List.Select(split, each _ <> ""),
-    result=Text.Combine(removeblanks, char),
-    SinEspacios = Text.Replace(result," ","")
+    EliminaEspacios = List.Select(split, each _ <> ""),
+    Resultado = Text.Combine(EliminaEspacios, char),
+    SinEspacios = Text.Replace(Resultado," ","")
 in SinEspacios
